@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">DevCloud</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_add_salesforce_account">Add a Salesforce Account</string>
+    <string name="menu_view_salesforce_accounts">Accounts</string>
+    <string name="menu_view_salesforce_limits">Limits</string>
+    <string name="menu_about">About</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="about_text">DevCloud brings the Salesforce Dev Console\nto your Android Phone.\n\nEnjoy features such as\n\n- running anonymous code\n- reading logs\n- performing SOQL queries\n- checking org limits.\n\nFree of charge forever</string>
+    <string name="about_text_html"><![CDATA[<p><center>DevCloud brings the Salesforce Dev Console<br>to your Android Phone.<br><br>Enjoy features such as</center><br><br><ul><li>Running Anonymous Code</li><li>Reading Logs</li><li>Performing SOQL queries</li><li>Checking Org Limits.</li></ul><br><br><center>Free of charge forever</center></p>]]></string>
+
+</resources>

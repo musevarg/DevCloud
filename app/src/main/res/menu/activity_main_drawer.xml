@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_add_salesforce_account"
+            android:icon="@drawable/ic_menu_add"
+            android:title="@string/menu_add_salesforce_account" />
+        <item
+            android:id="@+id/nav_view_salesforce_accounts"
+            android:icon="@drawable/ic_menu_accounts"
+            android:title="@string/menu_view_salesforce_accounts" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_about"
+            android:title="@string/menu_about" />
+    </group>
+</menu>
