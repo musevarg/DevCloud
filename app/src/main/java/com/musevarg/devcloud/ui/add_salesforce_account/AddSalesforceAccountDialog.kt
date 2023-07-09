@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.musevarg.devcloud.R
@@ -21,10 +23,16 @@ class AddSalesforceAccountDialog : DialogFragment() {
             // Pass null as the parent view because its going in the dialog layout
             val dialogView = inflater.inflate(R.layout.dialog_add_account, null)
             val buttonConnectViaBrowser = dialogView.findViewById<Button>(R.id.button_connect_via_browser)
+            val accountNameInput = dialogView.findViewById<EditText>(R.id.account_name_input)
 
             buttonConnectViaBrowser.setOnClickListener {
-                val intent = Intent(this.context, BrowserConnect::class.java)
-                startActivity(intent)
+                if (accountNameInput.text.isEmpty()) {
+                    Toast.makeText(this.context, getText(R.string.dialog_name_field_empty), Toast.LENGTH_SHORT).show()
+                } else {
+                    val intent = Intent(this.context, BrowserConnect::class.java)
+                    intent.putExtra("accountNameInput", accountNameInput.text.toString())
+                    startActivity(intent)
+                }
             }
 
             builder.setView(dialogView)
