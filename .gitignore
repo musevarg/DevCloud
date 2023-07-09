@@ -14,4 +14,4 @@
 .cxx
 local.properties
 
-app/src/main/res/values/oauth_test_strings.xml
+/app/src/main/res/values/oauth_test_strings.xml
