@@ -52,15 +52,17 @@
         <TextView
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/edittext_font_size"
             android:text="@string/dialog_account_name_input_label"/>
         <EditText
             android:id="@+id/account_name_input"
             android:inputType="text"
             android:autofillHints="name"
             android:hint="@string/dialog_account_name_hint"
+            android:textColorHint="@color/light_gray"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:layout_height="45dp"
+            android:textSize="@dimen/edittext_font_size"
             android:background="@android:drawable/editbox_background"/>
     </LinearLayout>
 

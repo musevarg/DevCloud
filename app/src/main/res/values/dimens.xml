@@ -8,4 +8,5 @@
     <dimen name="text_margin">16dp</dimen>
 
     <dimen name="header_font_size">18sp</dimen>
+    <dimen name="edittext_font_size">16sp</dimen>
 </resources>
