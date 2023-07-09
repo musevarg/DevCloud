@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/accountLogo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/dialog_header"
+            android:src="@drawable/ic_menu_accounts" />
+
+
+        <TextView
+            android:id="@+id/dialog_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/dialog_header"
+            android:textSize="@dimen/header_font_size"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_margin="15dp"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@color/default_dark" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="25dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp">
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_account_name_input_label"/>
+        <EditText
+            android:id="@+id/account_name_input"
+            android:inputType="text"
+            android:autofillHints="name"
+            android:hint="@string/dialog_account_name_hint"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:background="@android:drawable/editbox_background"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/dialog_connect_with_browser_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/default_dark"
+        android:backgroundTint="@color/default_light"
+        android:text="@string/dialog_api_oauth_button" />
+
+</LinearLayout>

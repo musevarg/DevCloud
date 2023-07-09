@@ -7,16 +7,27 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Menu Items -->
     <string name="menu_add_salesforce_account">Add a Salesforce Account</string>
     <string name="menu_view_salesforce_accounts">Accounts</string>
-    <string name="menu_view_salesforce_limits">Limits</string>
     <string name="menu_about">About</string>
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
-    <string name="about_text">DevCloud brings the Salesforce Dev Console\nto your Android Phone.\n\nEnjoy features such as\n\n- running anonymous code\n- reading logs\n- performing SOQL queries\n- checking org limits.\n\nFree of charge forever</string>
-    <string name="about_text_html"><![CDATA[<p><center>DevCloud brings the Salesforce Dev Console<br>to your Android Phone.<br><br>Enjoy features such as</center></p><br><br><ul><li>Running Anonymous Code</li><li>Reading Logs</li><li>Performing SOQL queries</li><li>Checking Org Limits.</li></ul><br><br><p><center>Free of charge forever</center></p>]]></string>
+    <!-- Account Menu Items -->
+    <string name="menu_acc_apex">Anonymous Apex</string>
+    <string name="menu_acc_soql">Run SOQL Query</string>
+    <string name="menu_acc_limits">Limits</string>
+
+    <!-- About Fragment -->
+    <string name="about_text">DevCloud brings the Salesforce Dev Console\nto your Android Phone.\n\nEnjoy features such as\n\n- running anonymous code\n- reading logs\n- performing SOQL queries\n- checking org limits.</string>
+    <string name="about_text_html"><![CDATA[<p><center>DevCloud brings the Salesforce Dev Console<br>to your Android Phone.<br><br>Enjoy features such as</center></p><p><ul><li>Running Anonymous Code</li><li>Reading Logs</li><li>Performing SOQL queries</li><li>Checking Org Limits.</li></ul></p><p><center><a href="https://github.com/musevarg/DevCloud">https://github.com/musevarg/DevCloud</a></center></p>]]></string>
     <string name="about_footer">© 2023 musevarg</string>
+
+    <!-- Connexion Dialog -->
+    <string name="dialog_header">Add Account</string>
+    <string name="dialog_account_name_input_label">Name:</string>
+    <string name="dialog_account_name_hint">Any name you like</string>
+    <string name="dialog_connect_with_browser_button">Connect via browser</string>
+    <string name="dialog_api_oauth_button">Connect by API</string>
+    <string name="dialog_close">Close</string>
 
 </resources>
