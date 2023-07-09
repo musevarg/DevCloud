@@ -1,17 +1,28 @@
 package com.musevarg.devcloud.oauth
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
+import com.musevarg.devcloud.MainActivity
+import com.musevarg.devcloud.R
 
 class BrowserConnect : AppCompatActivity() {
 
-    private val REDIRECT_URI = "https://test.salesforce.com/services/oauth2/callback"
-    private val CLIENT_ID = "3MVG92u_V3UMpV.iafsw913291tcmGbHLz5B4r1LgDPXTM._F4TVgHTzTmNjmnG5tP58lf1rYYNbWPuBISQzQ"
-    //private val CLIENT_SECRET = "1B070FED65E83905229416F2AC3161C5713F0351CF32268645869D16DD063DDE"
+    private val REQUEST_CODE_REDIRECT = 123
+    private val REDIRECT_URI = "devcloud://com.musevarg"
+    private val CLIENT_ID = getString(R.string.client_id)
+    //private val CLIENT_SECRET = getString(R.string.client_secret)
+    private val redirectLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // Handle the result and perform redirection
+            redirectToOtherView()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +43,7 @@ class BrowserConnect : AppCompatActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleAuthorizationResponse(intent)
+        redirectLauncher.launch(intent)
     }
 
     private fun handleAuthorizationResponse(intent: Intent) {
@@ -43,5 +55,16 @@ class BrowserConnect : AppCompatActivity() {
             Log.d("BrowserConnect", "Connection successful")
             Log.d("BrowserConnect", "Token: $accessToken")
         }
+    }
+
+    private fun redirectToOtherView() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish() // Optional: Finish the current activity if needed
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        redirectToOtherView()
     }
 }
