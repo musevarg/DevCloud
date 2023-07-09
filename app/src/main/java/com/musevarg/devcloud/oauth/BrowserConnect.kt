@@ -1,11 +1,9 @@
 package com.musevarg.devcloud.oauth
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import com.musevarg.devcloud.MainActivity
@@ -13,16 +11,7 @@ import com.musevarg.devcloud.R
 
 class BrowserConnect : AppCompatActivity() {
 
-    private val REQUEST_CODE_REDIRECT = 123
     private val REDIRECT_URI = "devcloud://com.musevarg"
-    private val CLIENT_ID = getString(R.string.client_id)
-    //private val CLIENT_SECRET = getString(R.string.client_secret)
-    private val redirectLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            // Handle the result and perform redirection
-            redirectToOtherView()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +21,7 @@ class BrowserConnect : AppCompatActivity() {
     private fun performOAuthLogin() {
         val authorizationUri = Uri.parse("https://test.salesforce.com/services/oauth2/authorize").buildUpon()
             .appendQueryParameter("response_type", "token")
-            .appendQueryParameter("client_id", CLIENT_ID)
+            .appendQueryParameter("client_id", getString(R.string.client_id))
             .appendQueryParameter("redirect_uri", REDIRECT_URI)
             .build()
 
@@ -43,18 +32,20 @@ class BrowserConnect : AppCompatActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleAuthorizationResponse(intent)
-        redirectLauncher.launch(intent)
     }
 
     private fun handleAuthorizationResponse(intent: Intent) {
         val uri = intent.data
         if (uri != null && uri.toString().startsWith(REDIRECT_URI)) {
+            Log.d("BrowserConnect", "Call back from Salesforce")
             // Extract the access token from the URI
-            val accessToken = uri.getQueryParameter("access_token")
+            val parsedUri = Uri.parse(uri.toString().replace('#', '?'))
+            val accessToken = parsedUri.getQueryParameter("access_token")
             // Use the access token for making API requests to Salesforce
-            Log.d("BrowserConnect", "Connection successful")
+
             Log.d("BrowserConnect", "Token: $accessToken")
         }
+        redirectToOtherView()
     }
 
     private fun redirectToOtherView() {
