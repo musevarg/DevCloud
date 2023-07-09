@@ -16,6 +16,7 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="about_text">DevCloud brings the Salesforce Dev Console\nto your Android Phone.\n\nEnjoy features such as\n\n- running anonymous code\n- reading logs\n- performing SOQL queries\n- checking org limits.\n\nFree of charge forever</string>
-    <string name="about_text_html"><![CDATA[<p><center>DevCloud brings the Salesforce Dev Console<br>to your Android Phone.<br><br>Enjoy features such as</center><br><br><ul><li>Running Anonymous Code</li><li>Reading Logs</li><li>Performing SOQL queries</li><li>Checking Org Limits.</li></ul><br><br><center>Free of charge forever</center></p>]]></string>
+    <string name="about_text_html"><![CDATA[<p><center>DevCloud brings the Salesforce Dev Console<br>to your Android Phone.<br><br>Enjoy features such as</center></p><br><br><ul><li>Running Anonymous Code</li><li>Reading Logs</li><li>Performing SOQL queries</li><li>Checking Org Limits.</li></ul><br><br><p><center>Free of charge forever</center></p>]]></string>
+    <string name="about_footer">© 2023 musevarg</string>
 
 </resources>
