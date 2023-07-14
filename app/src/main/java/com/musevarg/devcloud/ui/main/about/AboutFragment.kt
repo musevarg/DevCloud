@@ -1,4 +1,4 @@
-package com.musevarg.devcloud.ui.about
+package com.musevarg.devcloud.ui.main.about
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod

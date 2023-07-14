@@ -7,13 +7,19 @@
 
     <fragment
         android:id="@+id/nav_view_salesforce_accounts"
-        android:name="com.musevarg.devcloud.ui.view_salesforce_accounts.ViewSalesforceAccountsFragment"
+        android:name="com.musevarg.devcloud.ui.main.view_salesforce_accounts.ViewSalesforceAccountsFragment"
         android:label="@string/menu_view_salesforce_accounts"
         tools:layout="@layout/fragment_view_salesforce_accounts" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.musevarg.devcloud.ui.about.AboutFragment"
+        android:name="com.musevarg.devcloud.ui.main.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_run_apex"
+        android:name="com.musevarg.devcloud.ui.account_pages.apex_run.RunApexFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_run_apex" />
 </navigation>

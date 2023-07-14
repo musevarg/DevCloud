@@ -1,4 +1,4 @@
-package com.musevarg.devcloud.ui.view_salesforce_accounts
+package com.musevarg.devcloud.ui.main.view_salesforce_accounts
 
 import android.os.Bundle
 import android.util.Log
@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.musevarg.devcloud.R
 import com.musevarg.devcloud.database.SavedAccountDao
 import com.musevarg.devcloud.database.SavedAccountDatabase
+import com.musevarg.devcloud.global.GlobalVariables
+import com.musevarg.devcloud.global.GlobalVariablesUtil
+import com.musevarg.devcloud.helpers.NavigationViewHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -35,9 +39,9 @@ class ViewSalesforceAccountsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
+        /*arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+        }*/
     }
 
     fun iterateThroughSavedAccounts(view : View) {
@@ -58,8 +62,14 @@ class ViewSalesforceAccountsFragment : Fragment() {
                 adapter = ViewSalesforceAccountsRecyclerViewAdapter(savedAccounts) { position ->
                     // Handle item click here
                     val det = savedAccounts[position]
-                    val message = "$position: ${det.accountName}"
-                    Toast.makeText( this.context, message, Toast.LENGTH_SHORT).show()
+                    /*val message = "$position: ${det.accountName}"
+                    Toast.makeText( this.context, message, Toast.LENGTH_SHORT).show()*/
+
+                    val gvu = GlobalVariablesUtil()
+                    gvu.setAccount(det)
+
+                    val navController = findNavController()
+                    navController.navigate(R.id.nav_run_apex)
                 }
             }
         }
@@ -79,10 +89,19 @@ class ViewSalesforceAccountsFragment : Fragment() {
             }
         }
 
+        if (!GlobalVariables.isMainActivity){
+            val gvu = GlobalVariablesUtil()
+            val navigationView = gvu.getNavigationView()
+            val activity = requireActivity() as AppCompatActivity
+            val fragmentManager = this.parentFragmentManager
+            NavigationViewHelper.setMainNavView(navigationView, activity, fragmentManager)
+            GlobalVariables.isMainActivity = true
+        }
+
         return view
     }
 
-    companion object {
+    /*companion object {
 
         // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
@@ -95,5 +114,5 @@ class ViewSalesforceAccountsFragment : Fragment() {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
-    }
+    }*/
 }

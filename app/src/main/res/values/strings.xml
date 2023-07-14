@@ -7,6 +7,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="nav_header_welcome">Welcome</string>
+
     <!-- Menu Items -->
     <string name="menu_add_salesforce_account">Add a Salesforce Account</string>
     <string name="menu_view_salesforce_accounts">Connected Accounts</string>
@@ -30,5 +32,17 @@
     <string name="dialog_api_oauth_button">Connect by API</string>
     <string name="dialog_close">Close</string>
     <string name="dialog_name_field_empty">You must enter an account name</string>
+
+    <!-- Connected Account Drawer -->
+    <string name="menu_dev_console">Run Apex</string>
+    <string name="menu_logs">Logs</string>
+    <string name="menu_soql">Run SOQL Query</string>
+    <string name="menu_limits">Org Limits</string>
+    <string name="menu_back">Back to Home</string>
+
+    <!-- Dev Console -->
+    <string name="dev_input_hint">Type APEX here</string>
+    <string name="dev_button_send">Run APEX</string>
+    <string name="dev_run_apex_toast">Running APEX…</string>
 
 </resources>

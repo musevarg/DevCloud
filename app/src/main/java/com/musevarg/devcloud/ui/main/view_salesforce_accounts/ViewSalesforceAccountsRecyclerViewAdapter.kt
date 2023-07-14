@@ -1,4 +1,4 @@
-package com.musevarg.devcloud.ui.view_salesforce_accounts
+package com.musevarg.devcloud.ui.main.view_salesforce_accounts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

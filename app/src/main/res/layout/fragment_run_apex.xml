@@ -1,0 +1,55 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/default_light" >
+
+    <TextView
+        android:id="@+id/dev_console_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bottom_border"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- Input Box -->
+    <EditText
+        android:id="@+id/dev_console_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="14"
+        android:background="@drawable/bottom_border"
+        android:fontFamily="monospace"
+        android:gravity="top"
+        android:hint="@string/dev_input_hint"
+        android:autofillHints=""
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/button_run_apex"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:background="@color/default_light"
+        android:layout_margin="10dp"
+        android:text="@string/dev_button_send" />
+
+    <TextView
+        android:id="@+id/dev_console_logs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="19"
+        android:fontFamily="monospace"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/default_dark"
+        android:textSize="12sp" />
+
+</LinearLayout>

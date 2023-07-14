@@ -3,17 +3,20 @@ package com.musevarg.devcloud
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import com.musevarg.devcloud.databinding.ActivityMainBinding
-import com.musevarg.devcloud.ui.add_salesforce_account.AddSalesforceAccountDialog
+import com.musevarg.devcloud.global.GlobalVariables
+import com.musevarg.devcloud.global.GlobalVariablesUtil
+import com.musevarg.devcloud.ui.main.add_salesforce_account.AddSalesforceAccountDialog
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,8 +32,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(binding.appBarMain.toolbar)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
+        GlobalVariables.drawer_layout = drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+        GlobalVariables.nav_controller = navController
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
@@ -38,6 +43,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setNavigationItemSelectedListener(this)
+
+        val gvu = GlobalVariablesUtil()
+        gvu.setNavigationView(navView)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

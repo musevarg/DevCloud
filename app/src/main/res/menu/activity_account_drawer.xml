@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    android:id="@+id/account_drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dev_console"
+            android:icon="@drawable/ic_menu_console"
+            android:title="@string/menu_dev_console" />
+
+        <item
+            android:id="@+id/nav_logs"
+            android:icon="@drawable/ic_menu_logs"
+            android:title="@string/menu_logs" />
+
+        <item
+            android:id="@+id/nav_soql"
+            android:icon="@drawable/ic_menu_query"
+            android:title="@string/menu_soql" />
+
+        <item
+            android:id="@+id/nav_limits"
+            android:icon="@drawable/ic_menu_limits"
+            android:title="@string/menu_limits" />
+
+        <item
+            android:id="@+id/nav_back"
+            android:icon="@drawable/ic_menu_back"
+            android:title="@string/menu_back" />
+    </group>
+
+</menu>

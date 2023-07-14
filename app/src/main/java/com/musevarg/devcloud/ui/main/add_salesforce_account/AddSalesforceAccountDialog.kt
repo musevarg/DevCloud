@@ -1,4 +1,4 @@
-package com.musevarg.devcloud.ui.add_salesforce_account
+package com.musevarg.devcloud.ui.main.add_salesforce_account
 
 import android.app.Dialog
 import android.content.Intent
