@@ -41,19 +41,31 @@
         android:layout_height="3dp"
         android:background="@color/default_dark" />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/dialog_warning_message"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/warning_Color"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="25dp"
+        android:padding="5dp"
         android:paddingStart="40dp"
         android:paddingEnd="40dp">
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/edittext_font_size"
-            android:text="@string/dialog_account_name_input_label"/>
+            android:text="@string/dialog_account_name_input_label"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"/>
         <EditText
             android:id="@+id/account_name_input"
             android:inputType="text"
@@ -66,6 +78,54 @@
             android:background="@android:drawable/editbox_background"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/edittext_font_size"
+            android:text="@string/dialog_client_id_input_label"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp" />
+        <EditText
+            android:id="@+id/account_client_id"
+            android:inputType="text"
+            android:autofillHints="name"
+            android:hint="@string/dialog_client_id_hint"
+            android:textColorHint="@color/light_gray"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:textSize="@dimen/edittext_font_size"
+            android:background="@android:drawable/editbox_background"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/edittext_font_size"
+            android:text="@string/dialog_org_instance_label"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp" />
+
+        <Spinner
+            android:id="@+id/account_org_instance"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/button_connect_via_browser"
         android:layout_width="wrap_content"
@@ -73,11 +133,11 @@
         android:layout_marginTop="10dp"
         android:text="@string/dialog_connect_with_browser_button" />
 
-    <Button
+    <!--<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/default_dark"
         android:backgroundTint="@color/default_light"
-        android:text="@string/dialog_api_oauth_button" />
+        android:text="@string/dialog_api_oauth_button" /> -->
 
 </LinearLayout>

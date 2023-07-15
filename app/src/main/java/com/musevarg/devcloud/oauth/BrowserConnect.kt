@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.lifecycleScope
 import com.musevarg.devcloud.MainActivity
-import com.musevarg.devcloud.R
 import com.musevarg.devcloud.database.SavedAccount
 import com.musevarg.devcloud.database.SavedAccountDao
 import com.musevarg.devcloud.database.SavedAccountDatabase
@@ -16,11 +15,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class BrowserConnect : AppCompatActivity() {
 
     private lateinit var dao : SavedAccountDao
     private lateinit var accountNameInput: String
+    private lateinit var clientIdInput: String
+    private var isSandbox: Boolean = true
     private val REDIRECT_URI = "devcloud://com.musevarg"
+    private var closedByUser: Boolean = false
 
     private fun loadDao() {
         val database = SavedAccountDatabase.getInstance(this.applicationContext) // Replace "MyRoomDatabase" with your actual Room database class name
@@ -32,18 +35,23 @@ class BrowserConnect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         accountNameInput = intent.getStringExtra("accountNameInput") ?: ""
+        clientIdInput = intent.getStringExtra("clientIdInput") ?: ""
+        isSandbox = intent.getStringExtra("orgInstance") != "Production"
         loadDao()
         performOAuthLogin()
     }
 
     private fun performOAuthLogin() {
-        val authorizationUri = Uri.parse("https://test.salesforce.com/services/oauth2/authorize").buildUpon()
+        val authEndpoint = if (isSandbox) "https://test.salesforce.com/services/oauth2/authorize" else "https://login.salesforce.com/services/oauth2/authorize"
+        val authorizationUri = Uri.parse(authEndpoint).buildUpon()
             .appendQueryParameter("response_type", "token")
-            .appendQueryParameter("client_id", getString(R.string.client_id))
+            .appendQueryParameter("client_id", clientIdInput)
             .appendQueryParameter("redirect_uri", REDIRECT_URI)
             .build()
 
+
         val customTabsIntent = CustomTabsIntent.Builder().build()
+        customTabsIntent.intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY;Intent.FLAG_ACTIVITY_NEW_TASK;Intent.FLAG_ACTIVITY_CLEAR_TASK;Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
         customTabsIntent.launchUrl(this, authorizationUri)
     }
 
@@ -71,7 +79,10 @@ class BrowserConnect : AppCompatActivity() {
                 refreshToken = refreshToken.toString(),
                 instanceUrl = instanceUrl.toString(),
                 scope = scope.toString(),
-                tokenType = tokenType.toString()
+                tokenType = tokenType.toString(),
+                clientId = clientIdInput,
+                clientSecret = "",
+                isSandbox = isSandbox
             )
 
             lifecycleScope.launch {
@@ -80,21 +91,24 @@ class BrowserConnect : AppCompatActivity() {
                 }
             }
         }
-        redirectToOtherView()
     }
 
     fun saveToDb(savedAccount: SavedAccount) {
         dao.upsertSavedAccount(savedAccount)
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (closedByUser) {
+            redirectToOtherView()
+        }
+        closedByUser = true
+    }
+
+
     private fun redirectToOtherView() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish() // Optional: Finish the current activity if needed
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        redirectToOtherView()
     }
 }

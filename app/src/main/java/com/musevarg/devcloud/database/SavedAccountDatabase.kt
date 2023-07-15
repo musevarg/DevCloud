@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [SavedAccount::class],
-    version = 1
+    version = 3
 )
 
 abstract class SavedAccountDatabase : RoomDatabase(){

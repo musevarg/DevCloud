@@ -28,10 +28,19 @@
     <string name="dialog_header">Add Account</string>
     <string name="dialog_account_name_input_label">Name:</string>
     <string name="dialog_account_name_hint">Any name you like</string>
+    <string name="dialog_client_id_input_label">Client ID:</string>
+    <string name="dialog_client_id_hint">Client ID from your Connected App</string>
+    <string name="dialog_org_instance_label">Org Instance:</string>
     <string name="dialog_connect_with_browser_button">Connect via browser</string>
     <string name="dialog_api_oauth_button">Connect by API</string>
     <string name="dialog_close">Close</string>
     <string name="dialog_name_field_empty">You must enter an account name</string>
+    <string name="dialog_client_id_field_empty">You must enter a valid client id</string>
+    <string-array name="dialog_org_instance_array">
+        <item>Sandbox</item>
+        <item>Production</item>
+    </string-array>
+    <string name="dialog_warning_message">If you have already authorized a session,\nyou may need to clear the Salesforce cookies\nfrom your default browser to add a new account</string>
 
     <!-- Connected Account Drawer -->
     <string name="menu_dev_console">Run Apex</string>
@@ -44,5 +53,6 @@
     <string name="dev_input_hint">Type APEX here</string>
     <string name="dev_button_send">Run APEX</string>
     <string name="dev_run_apex_toast">Running APEX…</string>
+    <string name="dev_dialog_error_title">Error</string>
 
 </resources>

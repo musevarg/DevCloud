@@ -12,4 +12,6 @@
     <color name="default_dark">#104458</color>
     <color name="default_light">#EEF5FA</color>
 
+    <color name="warning_Color">#FB6F43</color>
+
 </resources>

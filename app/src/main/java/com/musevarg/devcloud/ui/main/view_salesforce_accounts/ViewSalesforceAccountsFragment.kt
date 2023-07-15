@@ -55,21 +55,23 @@ class ViewSalesforceAccountsFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = ViewSalesforceAccountsRecyclerViewAdapter(savedAccounts) { position ->
-                    // Handle item click here
-                    val det = savedAccounts[position]
-                    /*val message = "$position: ${det.accountName}"
-                    Toast.makeText( this.context, message, Toast.LENGTH_SHORT).show()*/
+                activity?.runOnUiThread {
+                    layoutManager = when {
+                        columnCount <= 1 -> LinearLayoutManager(context)
+                        else -> GridLayoutManager(context, columnCount)
+                    }
+                    adapter = ViewSalesforceAccountsRecyclerViewAdapter(savedAccounts) { position ->
+                        // Handle item click here
+                        val det = savedAccounts[position]
+                        /*val message = "$position: ${det.accountName}"
+                        Toast.makeText( this.context, message, Toast.LENGTH_SHORT).show()*/
 
-                    val gvu = GlobalVariablesUtil()
-                    gvu.setAccount(det)
+                        val gvu = GlobalVariablesUtil()
+                        gvu.setAccount(det)
 
-                    val navController = findNavController()
-                    navController.navigate(R.id.nav_run_apex)
+                        val navController = findNavController()
+                        navController.navigate(R.id.nav_run_apex)
+                    }
                 }
             }
         }

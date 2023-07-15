@@ -13,7 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.musevarg.devcloud.R
-import com.musevarg.devcloud.api_salesforce.ApexApi
+import com.musevarg.devcloud.api_salesforce.calls.ApexApi
 import com.musevarg.devcloud.global.GlobalVariables
 import com.musevarg.devcloud.global.GlobalVariablesUtil
 import com.musevarg.devcloud.helpers.NavigationViewHelper
@@ -53,33 +53,6 @@ class RunApexFragment : Fragment() {
         val activity = requireActivity() as AppCompatActivity
         NavigationViewHelper.setAccountNavView(navigationView, activity)
 
-        /*val navigationView = gvu.getNavigationView()
-        navigationView.menu.clear()
-        navigationView.inflateMenu(R.menu.activity_account_drawer)
-
-        val activity = requireActivity() as AppCompatActivity
-        val toolbar = activity.findViewById<Toolbar>(R.id.toolbar)
-        val drawerLayout = activity.findViewById<DrawerLayout>(R.id.drawer_layout)
-
-        toolbar.setNavigationIcon(R.drawable.ic_menu)
-        toolbar.setNavigationOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
-
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            // Handle navigation item clicks here
-            when (menuItem.itemId) {
-                R.id.nav_back -> {
-                    val navController = Navigation.findNavController(view)
-                    navController.navigate(R.id.nav_view_salesforce_accounts)
-                }
-            }
-
-            // Close the drawer after handling the click
-            drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }*/
-
         val headerText: TextView = view.findViewById(R.id.dev_console_header)
         val text = gvu.getAccount().accountName + " - Dev Console"
         headerText.text = text
@@ -91,8 +64,8 @@ class RunApexFragment : Fragment() {
             Toast.makeText(this.context, R.string.dev_run_apex_toast, Toast.LENGTH_SHORT).show()
             hideKeyboard()
 
-            val apiClient = ApexApi()
-            apiClient.runApex(codeInput.text.toString(), view, activity)
+            val apiClient = ApexApi(activity)
+            apiClient.runApex(codeInput.text.toString(), view)
         }
 
         GlobalVariables.isMainActivity = false
