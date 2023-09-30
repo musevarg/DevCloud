@@ -19,9 +19,9 @@ class ApexApi (val activity: Activity) {
     fun runApex (apexCode: String, view: View) {
 
         // Refresh the access token
-        AuthApi(activity).also {
+        /*AuthApi(activity).also {
             it.getToken()
-        }
+        }*/
 
         val request = Request.Builder()
             .url(getRunApexEndpoint(apexCode))
@@ -40,6 +40,16 @@ class ApexApi (val activity: Activity) {
             override fun onResponse(call: Call, response: Response) {
                 val responseBody = response.body?.string()
                 Log.d("ApiCall", responseBody.toString())
+
+                if (responseBody?.contains("INVALID_SESSION_ID", true) == true){
+                    // Refresh the access token
+                    AuthApi(activity).also {
+                        it.getToken()
+                        val apiClient = ApexApi(activity)
+                        apiClient.runApex(apexCode, view)
+                    }
+                    return
+                }
 
                 if (isResponseSuccess(responseBody.toString())){
                     activity.runOnUiThread {

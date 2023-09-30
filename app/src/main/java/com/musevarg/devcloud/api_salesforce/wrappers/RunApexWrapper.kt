@@ -1,5 +1,6 @@
 package com.musevarg.devcloud.api_salesforce.wrappers
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 
@@ -7,7 +8,7 @@ import kotlinx.serialization.Transient
 data class RunApexWrapper(
     val compiled: Boolean,
     val success: Boolean,
-    @Transient val compileProblem: String? = null,
-    @Transient val exceptionStackTrace: String? = null,
-    @Transient val exceptionMessage: String? = null
+    @SerialName("compileProblem") val compileProblem: String? = null,
+    @SerialName("exceptionStackTrace") val exceptionStackTrace: String? = null,
+    @SerialName("exceptionMessag") val exceptionMessage: String? = null
 )

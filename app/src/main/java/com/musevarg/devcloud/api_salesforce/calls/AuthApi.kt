@@ -25,6 +25,7 @@ class AuthApi (private val activity: Activity) {
             override fun onFailure(call: Call, e: IOException) {
                 // Handle error
                 e.printStackTrace()
+                Log.d("ApiCall", e.toString())
                 showErrorDialog(e.toString())
             }
 

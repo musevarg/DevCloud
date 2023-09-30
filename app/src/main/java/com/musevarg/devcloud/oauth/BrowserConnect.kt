@@ -5,9 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.musevarg.devcloud.MainActivity
+import com.musevarg.devcloud.R
 import com.musevarg.devcloud.database.SavedAccount
 import com.musevarg.devcloud.database.SavedAccountDao
 import com.musevarg.devcloud.database.SavedAccountDatabase
@@ -50,8 +53,15 @@ class BrowserConnect : AppCompatActivity() {
             .build()
 
 
-        val customTabsIntent = CustomTabsIntent.Builder().build()
+        val customTabsIntent = CustomTabsIntent.Builder()
+            .setDefaultColorSchemeParams(
+                CustomTabColorSchemeParams.Builder()
+                    .setToolbarColor(ContextCompat.getColor(this, R.color.default_dark)).build())
+            .setShareState(CustomTabsIntent.SHARE_STATE_OFF)
+        .build()
         customTabsIntent.intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY;Intent.FLAG_ACTIVITY_NEW_TASK;Intent.FLAG_ACTIVITY_CLEAR_TASK;Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+        customTabsIntent.intent.putExtra("org.chromium.chrome.browser.customtabs.EXTRA_DISABLE_STAR_BUTTON", true)
+        customTabsIntent.intent.putExtra("org.chromium.chrome.browser.customtabs.EXTRA_DISABLE_DOWNLOAD_BUTTON", true)
         customTabsIntent.launchUrl(this, authorizationUri)
     }
 
